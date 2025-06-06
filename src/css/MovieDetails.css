@@ -1,9 +1,0 @@
-.movie-details {
-  display: grid;
-  flex: auto;
-}
-
-.movie-poster {
-  height: 100%;
-  width: 50vh;
-}

@@ -25,6 +25,7 @@ html {
 
 body {
   overflow-x: visible;
+  overscroll-behavior: none;
 }
 
 body {

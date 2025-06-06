@@ -4,7 +4,7 @@
   overflow: hidden;
   background-color: #1a1a1a;
   transition: transform 0.2s;
-  height: 100%;
+  /* height: 100%; */
   display: flex;
   flex-direction: column;
 }
@@ -15,8 +15,10 @@
 
 .movie-poster {
   position: relative;
-  aspect-ratio: 2/3;
+  /* aspect-ratio: 6/8; */
+  height: 50vh;
   width: 100%;
+  background-color: #646cff;
 }
 
 .movie-poster img {
