@@ -1,5 +1,5 @@
 import "../css/Home.css";
-import MovieCard from "../components/movie-card";
+import MovieCard from "../components/MovieCard";
 import { useMovieContext } from "../context/MovieContext";
 
 const FavoritesScreen = () => {

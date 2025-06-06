@@ -2,7 +2,8 @@ import "../css/Home.css";
 import { useState, useEffect, lazy, Suspense } from "react";
 import { getPopularMovies, getSearchedMovies } from "../services/api_services";
 
-const MovieCard = lazy(() => import("../components/movie-card"));
+const MovieCard = lazy(() => import("../components/MovieCard"));
+const MovieCardShimmer = lazy(() => import("../components/MovieCardShimmer"));
 
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -69,20 +70,39 @@ const Home = () => {
 
       {/*on Loading */}
       {loading ? (
-        <div className="loading-message">Loading movies...</div>
+        <div className="movies-grid">
+          {Array.from({ length: 12 }).map((_, i) => (
+            <MovieCardShimmer movie={_} key={i} />
+          ))}
+        </div>
       ) : (
         //Wrap MovieCard usage with Suspense
-        <Suspense fallback={<div>Loading movie cards...</div>}>
-          <div className="movies-grid">
-            {movies.map((movie) => (
-              <MovieCard movie={movie} key={movie.id} />
-            ))}
-          </div>
-        </Suspense>
+        <div className="movies-grid">
+          {movies.map((movie) => (
+            <MovieCard movie={movie} key={movie.id} />
+          ))}
+        </div>
       )}
-      {/* Movies Grid */}
     </div>
   );
 };
 
 export default Home;
+
+// //Wrap MovieCard usage with Suspense
+// <Suspense
+//   fallback={
+//     <div className="movies-grid">
+//       <div>Loading....</div>
+//       {Array.from({ length: 12 }).map((_, i) => (
+//         <MovieCardShimmer movie={_} key={i} />
+//       ))}
+//     </div>
+//   }
+// >
+//   <div className="movies-grid">
+//     {movies.map((movie) => (
+//       <MovieCard movie={movie} key={movie.id} />
+//     ))}
+//   </div>
+// </Suspense>

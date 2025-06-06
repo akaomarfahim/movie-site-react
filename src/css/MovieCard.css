@@ -9,6 +9,17 @@
   flex-direction: column;
 }
 
+.movie-card-shimmer {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  transition: transform 0.2s;
+  /* height: 100%; */
+  display: flex;
+  flex-direction: column;
+}
+
 .movie-card:hover {
   transform: translateY(-5px);
 }

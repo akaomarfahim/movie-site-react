@@ -29,7 +29,7 @@ const MovieCard = ({ movie }) => {
           <div></div>
         </div>
         <div className="movie-info">
-          <h3>{movie.title ?? ""}</h3>
+          <h3>{movie.title ?? <Skeleton></Skeleton>}</h3>
           <p>{releaseDate}</p>
           <p className="two-line-ellipsis">{movie.overview}</p>
         </div>
@@ -39,3 +39,5 @@ const MovieCard = ({ movie }) => {
 };
 
 export default MovieCard;
+
+// <ShimmerDiv className="movie-card" mode="dark" height="600px" width="100%" loading={true}></ShimmerDiv>
