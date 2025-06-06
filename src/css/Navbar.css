@@ -1,0 +1,72 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #1d2633;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0; /* REQUIRED */
+  z-index: 1000;
+  backdrop-filter: blur(45px);
+}
+
+/* ---- BRAND */
+.navbar-brand {
+  align-items: center;
+}
+
+.navbar-brand img {
+  height: 40px;
+}
+
+/* ---- MENU LINKS */
+.navbar-links {
+  display: flex;
+  gap: 2rem;
+  color: aliceblue;
+  align-items: center;
+  text-align: center;
+  align-items: center;
+}
+
+.nav-link {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+  color: ghostwhite;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: ghostwhite;
+}
+
+/* ---- USER */
+.navbar-user {
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.navbar-user:hover {
+  color: #646cff;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 1rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  .navbar-links {
+    gap: 1rem;
+  }
+
+  .nav-link {
+    padding: 0.5rem;
+  }
+}

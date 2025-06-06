@@ -1,0 +1,7 @@
+.footer {
+  background-color: #1d2633;
+  color: aliceblue;
+  padding: 20px;
+  text-align: center;
+  flex-shrink: 0; /* prevent shrinking in flex layout */
+}
