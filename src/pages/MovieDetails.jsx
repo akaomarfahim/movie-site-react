@@ -37,11 +37,6 @@ const MovieDetailsScreen = () => {
       {movie ? (
         <div>
           <ShimmerDiv mode="dark" height={100} width={100} loading={true} />
-         <SkeletonTheme baseColor="#202020" highlightColor="#444">
-    <p>
-      <Skeleton count={3} />
-    </p>
-  </SkeletonTheme>
           <div className="movie-details">
             <div className="movie-poster">
               <img src={getPosterPath(movie)} alt={movie.title} />
