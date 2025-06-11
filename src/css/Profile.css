@@ -1,0 +1,98 @@
+/* ProfileScreen.css */
+
+.profile-container {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  /* background-color: #f9f9f9; */
+  min-height: 80vh;
+}
+
+.profile-card {
+  display: flex;
+  flex-direction: column;
+  background: #1a1a1a;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+.profile-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.profile-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.profile-avatar-icon {
+  font-size: 90px;
+  color: #ccc;
+  margin-bottom: 1rem;
+}
+
+.profile-name {
+  font-size: 1.6rem;
+  margin: 0.5rem 0 0.2rem;
+}
+
+.profile-email {
+  color: white;
+  font-size: 0.95rem;
+}
+
+.profile-section {
+  color: whitesmoke;
+  margin-bottom: 1.5rem;
+}
+
+.profile-section h3 {
+  font-size: 1.2rem;
+  color: whitesmoke;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.profile-section ul {
+  list-style: none;
+  padding-left: 1rem;
+  color: whitesmoke;
+}
+
+.profile-section ul li {
+  margin-bottom: 0.3rem;
+}
+
+.icon {
+  color: #646cff;
+}
+
+.logout-button {
+  background-color: #ff4757;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  transition: background 0.3s ease;
+  margin-top: auto;
+}
+
+.logout-button:hover {
+  background-color: #e84118;
+}

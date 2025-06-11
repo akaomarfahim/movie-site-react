@@ -54,7 +54,7 @@
 
 .movies-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, auto));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   /* Height of the rows as a result height of the movie-card */
   /* grid-auto-rows: minmax(600px, auto); */
   /* comment is because let the height be, the image and info will adjust as needed */
