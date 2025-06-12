@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 
 // Pages
-import Home from "../pages/home";
+import Home from "../pages/Home";
 import FavoritesScreen from "../pages/favorites";
 import MovieDetailsScreen from "../pages/MovieDetails";
 import ProfileScreen from "../pages/Profile";
