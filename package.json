@@ -1,8 +1,8 @@
 {
   "homepage": "https://akaomarfahim.github.io/movie-site-react",
-  "name": "movie-site",
+  "name": "movie-app",
+  "version": "1.0.0",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
