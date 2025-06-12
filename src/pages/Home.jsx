@@ -1,6 +1,6 @@
 import "../css/Home.css";
 import { useState, useEffect, lazy, Suspense } from "react";
-import { getPopularMovies, getSearchedMovies } from "../services/api_services";
+import { MovieService } from "../api/MovieServices";
 
 const MovieCard = lazy(() => import("../components/MovieCard"));
 const MovieCardShimmer = lazy(() => import("../components/MovieCardShimmer"));
@@ -8,46 +8,78 @@ const MovieCardShimmer = lazy(() => import("../components/MovieCardShimmer"));
 const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [movies, setMovies] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Load Popular Movies
-  const loadPopularMovies = async () => {
+  // Load popular movies on mount and when searchQuery is cleared
+  useEffect(() => {
+    let isMounted = true;
+
+    const loadPopularMovies = async () => {
+      if (isMounted) setLoading(true);
+      try {
+        const { popularMovies, currentPage, totalPages } = await MovieService.getPopularMovies();
+        setPage(currentPage);
+        setTotalPages(totalPages);
+        if (isMounted) {
+          setMovies((prevMovies) => [...prevMovies, ...popularMovies]);
+          setError(null);
+        }
+      } catch (err) {
+        console.error("Failed to load popular movies:", err);
+        if (isMounted) setError("Failed to load popular movies.");
+      } finally {
+        if (isMounted) setLoading(false);
+      }
+    };
+
+    if (searchQuery.trim() === "") {
+      loadPopularMovies();
+    }
+
+    return () => {
+      isMounted = false;
+    };
+  }, [searchQuery]);
+
+  // Initial and reset load
+  useEffect(() => {
+    loadMovies(1, true);
+  }, [searchQuery]);
+
+  // Infinite scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 300;
+
+      if (nearBottom && !loading && searchQuery.trim() === "" && page < totalPages) {
+        loadMovies(page + 1);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [page, totalPages, loading, searchQuery]);
+
+  // Handle search form submission
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    if (!searchQuery.trim() || loading) return;
+
+    setLoading(true);
     try {
-      const popularMovies = await getPopularMovies();
-      setMovies(popularMovies);
-    } catch (error) {
-      console.log(`Failed to load movies, error: ${error}`);
-      setError("Failed to load movies...");
+      const searchedMovies = await MovieService.getSearchedMovies(searchQuery);
+      setMovies(searchedMovies);
+      setError(null);
+    } catch (err) {
+      console.error("Failed to search movies:", err);
+      setError("Failed to search movies.");
     } finally {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    loadPopularMovies();
-  }, []);
-
-  useEffect(() => {
-    if (searchQuery.trim() === "") loadPopularMovies();
-  }, [searchQuery]);
-
-  async function handleSearch(e) {
-    e.preventDefault();
-    if (!searchQuery.trim()) return;
-    if (loading) return;
-    setLoading(true);
-    try {
-      const searchedMovies = await getSearchedMovies(searchQuery);
-      setMovies(searchedMovies);
-      setError(null);
-    } catch (error) {
-      console.log("Failed to get searched movies: " + error);
-      setError("Failed to get searched movies...");
-    } finally {
-      setLoading(false);
-    }
-  }
 
   return (
     <div className="home">

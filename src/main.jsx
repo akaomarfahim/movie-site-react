@@ -9,6 +9,7 @@ import { inject } from "@vercel/analytics";
 inject();
 
 // RFCE
+// npm create vite@latest movie-app --template react
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

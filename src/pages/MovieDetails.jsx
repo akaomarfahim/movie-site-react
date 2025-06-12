@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
-import { getMovieDetails, getPosterPath } from "../services/api_services";
+import { MovieService } from "../api/MovieServices";
 import "../css/MovieDetails.css";
 
 /**
@@ -24,7 +24,7 @@ const MovieDetailsScreen = () => {
       setLoading(true);
       setError(null);
 
-      const movieData = await getMovieDetails(id);
+      const movieData = await MovieService.getMovieDetails(id);
 
       if (!movieData) {
         throw new Error("No movie data received");
@@ -120,7 +120,7 @@ const MovieDetailsScreen = () => {
     );
   }
 
-  const posterUrl = getPosterPath(movie);
+  const posterUrl = MovieService.getPosterPath(movie);
   const movieTitle = movie.title || "Unknown Title";
 
   return (

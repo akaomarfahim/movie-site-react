@@ -1,6 +1,6 @@
 import dayjs from "dayjs";
 import "../css/MovieCard.css";
-import { getPosterPath } from "../services/api_services";
+import { MovieService } from "../api/MovieServices";
 import { useMovieContext } from "../context/MovieContext";
 import { Link } from "react-router-dom";
 
@@ -20,7 +20,7 @@ const MovieCard = ({ movie }) => {
     <Link to={`/details/${movie.id}`}>
       <div className="movie-card">
         <div className="movie-poster">
-          <img src={getPosterPath(movie)} alt={movie.title} />
+          <img src={MovieService.getPosterPath(movie)} alt={movie.title} />
           <div className="movie-overlay">
             <button className={`favorite-btn ${favorite ? "active" : ""}`} onClick={onTapFavorite}>
               ♥
