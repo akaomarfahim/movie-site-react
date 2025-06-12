@@ -21,10 +21,12 @@ const Home = () => {
       if (isMounted) setLoading(true);
       try {
         const { popularMovies, currentPage, totalPages } = await MovieService.getPopularMovies();
-        setPage(currentPage);
-        setTotalPages(totalPages);
+
         if (isMounted) {
-          setMovies((prevMovies) => [...prevMovies, ...popularMovies]);
+          // setMovies((prevMovies) => [...prevMovies, ...popularMovies]);
+          setMovies(popularMovies);
+          setPage(currentPage);
+          setTotalPages(totalPages);
           setError(null);
         }
       } catch (err) {
@@ -48,6 +50,7 @@ const Home = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     if (!searchQuery.trim() || loading) return;
+    setMovies([]);
 
     setLoading(true);
     try {
