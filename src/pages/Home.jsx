@@ -1,4 +1,4 @@
-import "../css/Home.css";
+import "../styles/Home.css";
 import { useState, useEffect, lazy, Suspense } from "react";
 import { MovieService } from "../api/MovieServices";
 
@@ -43,25 +43,6 @@ const Home = () => {
       isMounted = false;
     };
   }, [searchQuery]);
-
-  // Initial and reset load
-  useEffect(() => {
-    loadMovies(1, true);
-  }, [searchQuery]);
-
-  // Infinite scroll
-  useEffect(() => {
-    const handleScroll = () => {
-      const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 300;
-
-      if (nearBottom && !loading && searchQuery.trim() === "" && page < totalPages) {
-        loadMovies(page + 1);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [page, totalPages, loading, searchQuery]);
 
   // Handle search form submission
   const handleSearch = async (e) => {

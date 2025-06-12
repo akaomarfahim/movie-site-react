@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 import { MovieService } from "../api/MovieServices";
-import "../css/MovieDetails.css";
+import "../styles/MovieDetails.css";
 
 /**
  * MovieDetailsScreen Component

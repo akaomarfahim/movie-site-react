@@ -18,11 +18,6 @@ const fetchFromTMDB = async (endpoint) => {
 };
 
 export const MovieService = {
-    // getPopularMovies: async () => {
-    //     const data = await fetchFromTMDB(API_CONFIG.endpoints.popularMovies);
-    //     return data?.results || [];
-    // },
-
     getPopularMovies: async (page = 1) => {
         const endpoint = API_CONFIG.endpoints.popularMovies();
         const data = await fetchFromTMDB(endpoint);

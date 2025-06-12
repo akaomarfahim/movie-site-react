@@ -1,8 +1,8 @@
 import dayjs from "dayjs";
-import "../css/MovieCard.css";
 import { MovieService } from "../api/MovieServices";
 import { useMovieContext } from "../context/MovieContext";
 import { Link } from "react-router-dom";
+import "../styles/MovieCard.css";
 
 const MovieCard = ({ movie }) => {
   const { isFavorite, addToFavorites, removeFromFavorites } = useMovieContext();

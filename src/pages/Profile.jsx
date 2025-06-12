@@ -1,6 +1,6 @@
 import { FaUserCircle, FaHeart, FaFilm, FaSignOutAlt } from "react-icons/fa";
 import { useAuth } from "../context/AuthContext";
-import "../css/Profile.css";
+import "../styles/Profile.css";
 
 const Profile = () => {
   const { user, logout } = useAuth();

@@ -1,8 +1,8 @@
 import NavBar from "./components/NavBar";
 import { MovieProvider } from "./context/MovieContext";
 import { AuthProvider } from "./context/AuthContext";
-import "./css/App.css";
-import "./css/Footer.css";
+import "./styles/App.css";
+import "./styles/Footer.css";
 import AppRoutes from "./routes/AppRoutes";
 
 function App() {

@@ -1,6 +1,5 @@
-import "../css/MovieCard.css";
-import { Link } from "react-router-dom";
-import { ShimmerDiv, ShimmerText } from "shimmer-effects-react";
+import { ShimmerDiv } from "shimmer-effects-react";
+import "../styles/MovieCard.css";
 
 const ShimmerMovieCard = () => {
   return (
