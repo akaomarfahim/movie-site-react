@@ -7,6 +7,8 @@
 
 > A modern, responsive React application for discovering popular movies with personalized favorites and secure authentication features(simulate).
 
+> ### Live preview: https://movieapp-snowy-ten.vercel.app
+
 ## 📋 Table of Contents
 
 - [Overview](#-overview)
